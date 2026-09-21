@@ -1,0 +1,25 @@
+PURE DIGITAL — CLOUDFLARE WORKER PACKAGE
+
+This package serves the Pure Digital website and handles the contact form in one Cloudflare Worker.
+
+Worker name: pure-digital-books
+Contact email: puredigital@shcasting.online
+Secret required: RESEND_API_KEY
+Website domain: books.shcasting.online
+
+The Resend API key is NOT included in this package.
+
+Cloudflare setup:
+1. Deploy this Worker project.
+2. Add an encrypted Worker secret named RESEND_API_KEY.
+3. Attach books.shcasting.online as the custom domain.
+4. Test https://books.shcasting.online/contact/
+
+Do not put the Resend API key in any public file.
+
+
+CONTACT FORM FIX IN THIS PACKAGE
+- The contact form uses lowercase field names matching worker.js exactly: name, email, subject, message.
+- The official endpoint is /api/contact.
+- The Worker also accepts /api as a safety fallback.
+- No Resend API key is included in this ZIP. Keep the existing encrypted RESEND_API_KEY secret in Cloudflare.

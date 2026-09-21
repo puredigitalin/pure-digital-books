@@ -1,0 +1,30 @@
+REAL CONTACT FORM SETUP
+
+The site now includes a Cloudflare Pages Function at:
+  /functions/contact.js
+
+The contact form posts to:
+  /api/contact
+
+Backend provider:
+  Resend
+
+Before the form can send email:
+1. Create a Resend account.
+2. Add and verify your sending domain.
+3. Create a Resend API key.
+4. In Cloudflare Pages > your project > Settings > Variables and Secrets,
+   add:
+     RESEND_API_KEY = your Resend API key
+   Mark it as encrypted/secret.
+5. In functions/contact.js, replace the example "from" address
+   (onboarding@resend.dev) with an email address on your verified domain,
+   for example:
+     Pure Digital Website <puredigital@shcasting.online>
+6. Redeploy the Cloudflare Pages project.
+
+IMPORTANT:
+- Never put the Resend API key in HTML, JavaScript in /assets, or any
+  other client-side file.
+- The contact destination is puredigital@shcasting.online.
+- The function validates required fields and the email format.
