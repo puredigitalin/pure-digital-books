@@ -56,6 +56,19 @@ export default {
       }
     }
 
-    return env.ASSETS.fetch(request);
+    // Serve index.html for clean directory-style URLs such as /contact/
+    // and /how-to-stop-impulse-spending-with-adhd/.
+    let assetRequest = request;
+    const assetUrl = new URL(request.url);
+    if (assetUrl.pathname !== "/" && !assetUrl.pathname.includes(".")) {
+      if (!assetUrl.pathname.endsWith("/")) assetUrl.pathname += "/";
+      assetUrl.pathname += "index.html";
+      assetRequest = new Request(assetUrl.toString(), request);
+    } else if (assetUrl.pathname.endsWith("/")) {
+      assetUrl.pathname += "index.html";
+      assetRequest = new Request(assetUrl.toString(), request);
+    }
+
+    return env.ASSETS.fetch(assetRequest);
   }
 };
