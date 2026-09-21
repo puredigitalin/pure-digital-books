@@ -16,7 +16,7 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    if (url.pathname === "/api/contact") {
+    if (url.pathname === "/api/contact" || url.pathname === "/api") {
       if (request.method !== "POST") return new Response("Method Not Allowed", { status: 405 });
 
       try {
@@ -44,7 +44,12 @@ export default {
           })
         });
 
-        if (!response.ok) return htmlResponse("Unable to Send", "We couldn't send your message right now. Please email puredigital@shcasting.online.", 502);
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error("Resend API error", response.status, errorText.slice(0, 1000));
+          return htmlResponse("Unable to Send", "We couldn\'t send your message right now. Please email puredigital@shcasting.online.", 502);
+        }
+
         return htmlResponse("Message Sent", "Thank you. Your message has been sent to Pure Digital.");
       } catch {
         return htmlResponse("Something Went Wrong", "Please email puredigital@shcasting.online.", 500);
