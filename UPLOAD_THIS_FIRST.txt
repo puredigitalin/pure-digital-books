@@ -1,0 +1,16 @@
+PURE DIGITAL — 7 ARTICLE WEBSITE PACKAGE
+
+This package contains the known-good Pure Digital website plus 7 ADHD money guides, an Articles & Guides navigation link, an Articles & Guides hub, and an updated sitemap.
+
+IMPORTANT: Upload the contents of this ZIP to the GitHub repository root and keep the folder paths exactly as shown. This package includes the existing homepage and website files so the current design is preserved.
+
+The 7 guides are:
+1. ADHD Money Management
+2. ADHD & Impulse Spending
+3. The ADHD Tax
+4. How to Stop Impulse Spending With ADHD
+5. ADHD Saving Money
+6. Why Do People With ADHD Overspend?
+7. How to Manage Money With ADHD Without a Traditional Budget
+
+Articles hub: /articles/
